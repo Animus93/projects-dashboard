@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="content">
+    <div class="title">Задачи проекта</div>
+    <div class="subtitle">Проекта "{{ widget.project.name }}"</div>
+    <div class="tasks">
+      <div class="item">
+        <div class="item-title complete">Выполнено проектов:</div>
+        <div class="item-content">{{ widget.project.tasksCompleted }}</div>
+      </div>
+      <div class="item">
+        <div class="item-title all">Всего проектов:</div>
+        <div class="item-content">{{ widget.project.tasksTotal }}</div>
+      </div>
+    </div>
+  </div>
+  <mat-icon (click)="delete()" class="delete">delete</mat-icon>
+</div>

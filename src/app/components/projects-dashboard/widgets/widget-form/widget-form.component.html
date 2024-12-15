@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="header">
+    <div class="title">Новый виджет</div>
+    <button mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+  <div [formGroup]="widgetForm" class="form">
+    <div class="form-filed">
+      <div class="form-label">Тип виджета*</div>
+      <mat-select formControlName="type" class="select" [class.error]="widgetForm.get('type')?.errors">
+        @for (option of options; track option) {
+          <mat-option [value]="option.value">
+            {{ option.name }}
+          </mat-option>
+        }
+      </mat-select>
+    </div>
+    <div class="form-filed">
+      <div class="form-label">
+        <div>Проект*</div>
+        @if (loading) {
+          <mat-spinner [diameter]="15"></mat-spinner>
+        }
+      </div>
+      <div class="input-wrapper" [class.error]="widgetForm.get('project')?.errors || !this.widgetForm.get('project')?.value?.id">
+        <input type="text" placeholder="Начните вводить название проекта" matInput formControlName="project"
+               [matAutocomplete]="auto">
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="projectName">
+          @if (projects.length > 0) {
+            @for (project of projects; track project) {
+              <mat-option [value]="project">{{ project.name }}</mat-option>
+            }
+          } @else {
+            <mat-option>Проект не найден</mat-option>
+          }
+        </mat-autocomplete>
+        @if (widgetForm.get('project')?.value) {
+          <button class="clear" (click)="clearProjectField()" mat-icon-button>
+            <mat-icon class="clear-icon">backspace</mat-icon>
+          </button>
+        }
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    <button class="submit" (click)="onSubmit()"
+            [class.disabled]="widgetForm.invalid || widgetForm.untouched || !this.widgetForm.get('project')?.value?.id"
+            [disabled]="widgetForm.invalid || widgetForm.untouched || !this.widgetForm.get('project')?.value?.id"
+            mat-button>
+      <div class="submit-content">Создать</div>
+    </button>
+  </div>
+</div>

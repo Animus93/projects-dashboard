@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="content">
+    <div class="title">Выполнено задач</div>
+    <div class="subtitle">Проекта "{{ widget.project.name }}"</div>
+    <apx-chart class="chart"
+               [series]="chartOptions?.series"
+               [chart]="chartOptions?.chart"
+               [labels]="chartOptions?.labels"
+               [responsive]="chartOptions?.responsive"
+    ></apx-chart>
+  </div>
+  <mat-icon (click)="delete()" class="delete">delete</mat-icon>
+</div>

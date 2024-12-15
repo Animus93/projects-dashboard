@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  padding: 0;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.header, .footer {
+  min-height: 45px;
+  width: 100%;
+  background-color: var(--main-Color);
+}
+
+.content {
+  width: 100%;
+  max-width: 1024px;
+  flex: 1;
+  align-self: center;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+::ng-deep .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+  stroke: var(--main-Color) !important; /* Change the color to orange */
+}

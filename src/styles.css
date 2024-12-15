@@ -1,1 +1,26 @@
-/* You can add global styles to this file, and also import other style files */
+
+body {
+  padding: unset;
+  margin: unset;
+}
+
+:root {
+  --main-Color: #9674da;
+}
+
+html {
+}
+
+body {
+  margin: 0;
+  font-family: monospace;
+  letter-spacing: normal
+}
+
+button {
+  letter-spacing: normal !important;
+}
+
+::ng-deep.cdk-overlay-pane.mat-mdc-dialog-panel  {
+ max-width: unset !important;
+}

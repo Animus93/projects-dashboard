@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="content">
+    <div class="title">Дедлайн проекта</div>
+    <div class="subtitle">Проекта "{{ widget.project.name }}"</div>
+    <div class="deadline">
+      <div class="item">
+        <div class="item-title">Дата начала:</div>
+        <div class="item-content">{{ formatDate(widget.project.startDate) }}</div>
+      </div>
+      <div class="item">
+        <div class="item-title">Дата завершения:</div>
+        <div class="item-content">{{ formatDate(widget.project.endDate) }}</div>
+      </div>
+      <div class="item">
+        <div class="item-title">Осталось дней:</div>
+        <div class="item-content">{{ getDaysRemaining(widget.project.startDate, widget.project.endDate) }}</div>
+      </div>
+    </div>
+  </div>
+  <mat-icon (click)="delete()" class="delete">delete</mat-icon>
+</div>

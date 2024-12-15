@@ -1,0 +1,40 @@
+<div class="container">
+  @if (loading) {
+    <div class="loader">
+      <mat-spinner></mat-spinner>
+    </div>
+  }
+  @if (widgets.length > 0) {
+    <div cdkDropList cdkDropListOrientation="mixed" (cdkDropListDropped)="drop($event)" class="widgets">
+      @for (widget of widgets; track widget) {
+        <div appResize (resizeEnd)="onResize($event)" [style.width]="widget.width+'px'"
+             [style.height]="widget.height+'px'" cdkDrag
+             class="widget" [id]="widget.id">
+          <mat-icon class="widget-drag" cdkDragHandle>drag_indicator</mat-icon>
+          @switch (widget.type) {
+            @case ('deadline') {
+              <app-deadline class="item" [widget]="widget" (widgetEvent)="deleteWidget($event)"></app-deadline>
+            }
+            @case ('progress') {
+              <app-progress class="item" [widget]="widget" (widgetEvent)="deleteWidget($event)"></app-progress>
+            }
+            @case ('tasks') {
+              <app-tasks class="item" [widget]="widget" (widgetEvent)="deleteWidget($event)"></app-tasks>
+            }
+          }
+        </div>
+      }
+    </div>
+    <button class="create" (click)="showWidgetForm()" mat-button>
+      <div class="create-content">Создать виджет</div>
+    </button>
+  } @else {
+    <div class="empty-content">
+      <div class="title">Нет созданных виджетов</div>
+      <div class="subtitle">Создавайте виджеты для отслеживания состояния проектов</div>
+      <button class="create" (click)="showWidgetForm()" mat-button>
+        <div class="create-content">Создать виджет</div>
+      </button>
+    </div>
+  }
+</div>
