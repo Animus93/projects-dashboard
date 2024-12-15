@@ -32,7 +32,7 @@
               <mat-option [value]="project">{{ project.name }}</mat-option>
             }
           } @else {
-            <mat-option>Проект не найден</mat-option>
+            <mat-option (click)="clearProjectField()">Проект не найден</mat-option>
           }
         </mat-autocomplete>
         @if (widgetForm.get('project')?.value) {

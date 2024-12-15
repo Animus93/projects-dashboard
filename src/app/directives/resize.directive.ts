@@ -19,6 +19,7 @@ export class ResizeDirective {
       this.resizing = true;
     }
   }
+
   @HostListener('document:mouseup', ['$event'])
   onMouseUp(event: MouseEvent) {
     if (this.resizing) {
